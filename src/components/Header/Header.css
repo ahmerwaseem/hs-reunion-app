@@ -1,0 +1,13 @@
+.Header {
+  font-weight: 900px;
+  padding: 25px 25px;
+  min-height: 75px; }
+  .Header .Header-Logo {
+    float: left; }
+  .Header .Header-Nav {
+    float: right; }
+    .Header .Header-Nav .Header-Item {
+      padding: 0px 10px;
+      background-color: red;
+      display: inline;
+      border-right: 2px solid white; }

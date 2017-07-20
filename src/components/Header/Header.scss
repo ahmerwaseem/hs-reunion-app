@@ -1,0 +1,42 @@
+//@import
+// @import '../../../node_modules/bootstrap/dist/css/bootstrap.css';
+//
+// Header
+//
+
+.Header {
+  // @include media-breakpoint-up(700px){
+  //    padding: 25px 150px;
+  //    background: red;
+  // }
+  font-weight: 900px;
+  padding: 25px 25px;
+  //background:yellow;
+  min-height: 75px;
+
+
+
+  //display: inline;
+    .Header-Logo{
+     // display:inline;
+      float: left;
+    }
+
+    .Header-Nav {
+            //  height: 100%;
+      //display:inline;
+      float: right;
+
+      .Header-Item{
+       // height: 100%;
+        padding: 0px 10px;
+        background-color:red;
+        display:inline;
+        border-right: 2px solid white;
+        //border-color: transparent transparent white;
+      }
+    }
+
+
+
+}
