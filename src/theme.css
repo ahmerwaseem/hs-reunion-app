@@ -1,6 +1,6 @@
 @import url(/node_modules/bootstrap/dist/css/bootstrap.css);
+@import url("https://fonts.googleapis.com/css?family=Nunito");
 body {
   min-height: 100%;
-  min-width: 100%;
-  background: #2d2d2d;
-  font-family: 'Josefin Sans', Verdana, Tahoma, sans-serif; }
+  background: url(wov.png), color(white);
+  font-family: 'Nunito', sans-serif; }

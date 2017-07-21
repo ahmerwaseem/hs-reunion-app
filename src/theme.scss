@@ -1,10 +1,12 @@
 @import '/node_modules/bootstrap/dist/css/bootstrap.css';
-@import '_breakpoints.scss';
+@import 'node_modules/bootstrap/scss/mixins/_alert.scss';
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+//@import '../public/cork-wallet.png';
 //@import 'bootstrap';
 
 body {
   min-height: 100%;
-  min-width: 100%;
-  background: #2d2d2d;
-  font-family: 'Josefin Sans', Verdana, Tahoma, sans-serif;
+  //background: #2d2d2d;
+  background:  url(wov.png), color(white), ;
+  font-family: 'Nunito', sans-serif;
 }
