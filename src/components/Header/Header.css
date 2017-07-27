@@ -1,13 +1,26 @@
 .Header {
-  font-weight: 900px;
-  padding: 25px 25px;
-  min-height: 75px; }
+  min-height: 35px; }
   .Header .Header-Logo {
-    float: left; }
+    height: auto;
+    width: auto;
+    font-weight: bold;
+    float: left;
+    color: #004c00; }
+    .Header .Header-Logo .Header-Logo-Image img {
+      width: 110px;
+      height: 104px; }
   .Header .Header-Nav {
+    margin: 0px;
     float: right; }
     .Header .Header-Nav .Header-Item {
-      padding: 0px 10px;
-      background-color: red;
+      margin: 0px 10px;
       display: inline;
-      border-right: 2px solid white; }
+      color: #3f3f3f;
+      transition: color .5s ease-out; }
+      .Header .Header-Nav .Header-Item a {
+        text-decoration: none;
+        color: inherit; }
+      .Header .Header-Nav .Header-Item:hover {
+        cursor: pointer;
+        text-shadow: 2px;
+        color: #FFC72D; }

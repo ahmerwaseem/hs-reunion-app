@@ -1,9 +1,10 @@
-//@import
+@import 'src/_styles/_variables.scss';
 
 //
 // Main
 //
 
 .Main {
-  min-height: 80%;
+  min-height: 500px;
+  background:white;
 }

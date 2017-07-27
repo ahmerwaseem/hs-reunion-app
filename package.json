@@ -44,6 +44,8 @@
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
     "redux": "^3.7.1",
+    "redux-form": "^7.0.2",
+    "redux-thunk": "^2.2.0",
     "style-loader": "0.18.2",
     "sw-precache-webpack-plugin": "0.11.3",
     "url-loader": "0.5.9",
@@ -55,6 +57,7 @@
   "devDependencies": {
     "node-sass": "^4.5.3",
     "plop": "^1.8.0",
+    "redux-logger": "^3.0.6",
     "sass-loader": "^6.0.6"
   },
   "scripts": {

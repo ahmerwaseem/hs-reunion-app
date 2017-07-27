@@ -17,7 +17,9 @@ class Footer  extends Component{
   render(){
     return (
       <div className = "Footer"> 
-        Footer 
+        <div className = "Footer-Content">
+        Waubonsie Valley Warrior - Class of 2006 Reunion &copy;
+        </div>
       </div>
     )
   }
