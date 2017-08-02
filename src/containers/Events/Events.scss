@@ -3,8 +3,68 @@
 //
 // Events
 // Follow BEM Methodology - Embed all styles in parent container
-//
+@import 'src/_styles/variables.scss';
 
 .Events {
+    .detail{
+        font-size: 18px;
+        text-decoration: underline
+    }
+    .EventList{
+          padding-left: 0px;
+        list-style: none;
+
+        .EventItem{
+          border: $warrior-green 2px solid;
+          border-radius: 5px;
+            margin: 15px 0px;
+            //height: 125px;
+            .card-block{
+              padding: 0.50rem
+            }
+            .card-header{
+              font-size: 18px;
+              font-weight: bold;
+              color: $warrior-green;
+              background-color: $warrior-gold;
+              text-shadow: -.5px 0 white, 0 .5px white, .5px 0 white, 0 -.5px white;
+              border-bottom: $warrior-green 2px solid;
+            }
+
+            .EventDate{
+              border: $warrior-green solid 5px;
+                padding: 10px 10px;
+                // float:left;
+                color: black;
+                background: $warrior-gold;
+
+                .EventDay{
+                    padding: 10px 10px;
+                    font-size: 30px;
+
+                }
+
+                .EventMonth{
+
+                    font-size: 16px;
+                }
+
+
+            }
+
+            .EventDetails{
+                padding: 10px 10px;
+                color: $warrior-green;
+                border: $warrior-green solid 5px;
+                background-color: white;
+
+
+
+            }
+
+
+        }
+
+    }
 
 }

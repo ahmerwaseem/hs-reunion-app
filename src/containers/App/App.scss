@@ -1,11 +1,10 @@
-// @import '/node_modules/bootstrap/scss/mixins/_breakpoints.scss';
-// @import 'bootstrap';
-//
+@import 'src/_styles/variables.scss';
 // App
 // Follow BEM Methodology - Embed all styles in parent container
 //
 //@import '../../wvcolorlogo.jpg';
 
 .App {
+    // background-color: $warrior-green;
 
 }

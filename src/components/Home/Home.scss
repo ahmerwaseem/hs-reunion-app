@@ -1,9 +1,13 @@
 //@import
-
+@import 'src/_styles/variables.scss';
 //
 // Home
 //
 
 .Home {
-    background:white;
+
+    //border-radius: 50px;
+    .wvhsBuilding{
+        border-radius: 50px;
+    }
 }

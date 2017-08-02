@@ -1,9 +1,5 @@
-@import 'src/_styles/_variables.scss';
-@import 'node_modules/bootstrap/scss/mixins/_breakpoints.scss';
+@import 'src/_styles/variables.scss';
 
-//@import
-// @import '../../../node_modules/bootstrap/dist/css/bootstrap.css';
-//
 // Header
 //
 
@@ -13,48 +9,61 @@
   //    background: red;
   // }
   //padding: 35px 45px;
-  min-height: 35px;
+  //min-height: 50px;
+  
+  //border-bottom: $warrior-green 5px solid;
+  .navbar-brand{
+        transition: font-size .5s ease-out !important;
+        
+
+        &:hover{
+          font-size: 22px !important;
+        }
+
+  }
   // box-shadow: 0px 3px 20px $warrior-green;
 
 
   //display: inline;
-    .Header-Logo{
-     // display:inline;
-      height:auto;
-      width:auto;
-      font-weight: bold;
-      float: left;
-      color: $warrior-green;
-      .Header-Logo-Image{
-        img{
-          width: 110px;
-          height:104px;
-        }
-      }
-    }
+    // .Header-Logo{
+    //  // display:inline;
+    //   height:auto;
+    //   width:auto;
+    //   font-weight: bold;
+    //   float: left;
+    //   color: $warrior-green;
+    //   .Header-Logo-Image{
+    //     img{
+    //       width: 110px;
+    //       height:104px;
+    //     }
+    //   }
+    // }
 
     .Header-Nav {
-      margin: 0px;
+
       // @include media-breakpoint-up(992px){
       //   float: right;
       // }
-      float: right;
+      // float: right;
       
 
       .Header-Item{
-        margin: 0px 10px;
-        display:inline;
-        color: $header-item-color;
-        transition: color .5s ease-out;
+        margin: 0px;
+        padding-left: 30px;
+        // display:inline;
+
 
         a {
           text-decoration: none;
           color: inherit;
+          transition: color .5s ease-out,
+          font-size .3s ease-out;
         }
         &:hover{
           cursor: pointer;
-          text-shadow: 2px;
           color: $warrior-gold;
+          font-size: 16.5px;
         }
       }
     }

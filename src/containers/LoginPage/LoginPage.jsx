@@ -1,29 +1,17 @@
 import  React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form'
 import './LoginPage.css';
 import classNames from 'classnames';
-import userSignIn from '../../actions/users';
+import { userSignIn, clearErrors } from '../../actions/users';
 import { bindActionCreators } from 'redux'
+import { required, email } from '../../utils/validators';
+import Error from '../../components/Error/Error';
 
 
-const validate = values => {
-  console.log(values.email,"values");
-  const errors = {}
-  if (!values.email) {
-    errors.email = 'Required'
-  }
-
-  if (!values.password) {
-    errors.password = 'Required'
-  }
-  console.log(errors);
-  return errors;
-}
-
-
-const renderField = (props) => {
+const renderInputField = (props) => {
   const {
     input,
     label,
@@ -44,14 +32,21 @@ const renderField = (props) => {
 
 
   return ( 
-    <div className="form-group row">
-      <div className="col-10">
-        <input className="form-control" type={type} onInput={change} onBlur={blur} placeholder={label}/>
+    <div className="form-group">
+
+      <div className="row">
+        <input className="form-control col-md-6 offset-md-3 col-xs-12" type={type} onInput={change} onBlur={blur} placeholder={label}/>
       </div>
       {(()=>{ 
         if (touched && error)
           return(
-            <div>{error}</div>
+          <div className="row">
+            <div className="col-md-6 offset-md-3 col-xs-12">
+              <div className="" role="alert">
+                  <Error error={error}/>
+               </div>
+            </div>
+          </div>
           )
       })()}
     </div>
@@ -62,17 +57,17 @@ class LoginPage  extends Component{
   constructor(props) {
     super(props);
 
-    console.log(this.props," yo");
     //this.props.userSignIn();
 
 
   }
   
-  submit = () => {
-    this.props.userSignIn();
+  submit = (values) => {
+    this.props.userSignIn(values.email, values.password);
   }
 
  componentWillMount(){
+   window.scrollTo(0, 0);
     if (this.props.user.signedIn){
       this.props.history.push('/')
     }
@@ -80,43 +75,70 @@ class LoginPage  extends Component{
 
  componentDidUpdate(){
     if (this.props.user.signedIn){
-      this.props.history.push('/')
+      this.props.history.goBack();
     }
+  }
+
+  componentWillUnmount(){
+    this.props.clearErrors();
   }
 
   render(){
 
-    console.log(this.props," yo in render");
     const { handleSubmit, pristine, reset, submitting } = this.props;
     return (
 
       <div className = "LoginPage"> 
         <form onSubmit={handleSubmit(this.submit)}>
-          <div className="LoginEmail">
-            <Field 
-              name="email"
-              type="text"
-              component={renderField}
-              label="Email"
-            />
+          <div className="row">
+            <div className="col-md-6 offset-md-3 col-xs-12">
+              <h5> Please Log In </h5>
+            </div>
           </div>
-          <div className="LoginPassword">
-            <Field 
-              name="password"
-              type="password"
-              component={renderField}
-              label="Password"
-            />
-          </div>
+            <div className="LoginEmail">
+              <Field 
+                name="email"
+                type="text"
+                component={renderInputField}
+                label="Email"
+                validate={[required, email]}
+              />
+            </div>
+            <div className="LoginPassword">
+              <Field 
+                name="password"
+                type="password"
+                component={renderInputField}
+                label="Password"
+                validate={[required]}
+              />
+            </div>
           <div>
-            <button className="btn btn-primary" type="submit">Submit</button>
-            <button className="btn btn-secondary" >Clear</button>
-          </div>
+            {(() =>{
+              if (this.props.user.signInError) {
+                return (
+                  <div className="row">
+                    <div className="col-md-6 offset-md-3 col-xs-12">
+                      <div className="" role="alert">
+                        <Error error={this.props.user.signInError}/>
+                      </div>                   
+                    </div>
+                  </div>
+                )
+              }
+            })()}
+            </div>
+            <div className="row">
+                <button className="btn btn-primary col-md-6 offset-md-3 col-xs-12" type="submit">LOGIN</button>
+            </div>
+            <div className="row">
+            <Link className="col-md-6 offset-md-3 col-xs-12 register" to='/register'>Don't have an account? Register Here</Link>
+            </div>
+          
         </form>
       </div>
     )
   }
-
 }
 
 const mapStateToProps = (state) => {
@@ -126,7 +148,11 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ userSignIn : userSignIn}, dispatch);
+  return bindActionCreators({ 
+    userSignIn : userSignIn,
+    clearErrors: clearErrors
+    }, 
+    dispatch);
 }
 
 LoginPage = connect(
@@ -136,5 +162,4 @@ LoginPage = connect(
 
 export default reduxForm({
   form: 'LoginPage',
-  validate,
 })(LoginPage);

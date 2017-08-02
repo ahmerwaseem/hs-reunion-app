@@ -1,0 +1,17 @@
+
+@import 'src/_styles/variables.scss';
+
+//
+// ModalWindow
+//
+
+.ModalWindow {
+
+        .modal-header{
+            color: white;
+            background-color: $warrior-green;
+        }
+        .modal-dialog{
+            border: $warrior-green solid 3px;
+        }
+}

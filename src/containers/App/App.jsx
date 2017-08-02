@@ -8,6 +8,9 @@ import './App.css';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import Main from '../../components/Main/Main';
+import TopBanner from '../../components/TopBanner/TopBanner';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'font-awesome/css/font-awesome.css';
 
 const propTypes = {
 
@@ -24,9 +27,11 @@ class App  extends Component{
   }
   render(){
     return (
-      <div className="App">
+      <div className="App container-fluid">
         <div>
+          <TopBanner/>
           <Header {...this.props}/>
+          <TopBanner/> 
           <Main/>
           <Footer/>
         </div>

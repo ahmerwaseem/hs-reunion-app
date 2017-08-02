@@ -24,7 +24,7 @@ class Main  extends Component{
   }
   render(){
     return (
-      <div className = "Main container"> 
+      <div className = "Main container-fluid"> 
         <Switch>
           <Route exact path="/"   component={Home}/>
           <Route path="/contact"  component={Contact}/>

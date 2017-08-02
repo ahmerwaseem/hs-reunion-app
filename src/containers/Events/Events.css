@@ -1,0 +1,75 @@
+.btn-primary {
+  color: white;
+  background-color: #004c00;
+  border-color: #FFC72D; }
+  .btn-primary:hover {
+    color: white;
+    background-color: #001900;
+    border-color: #efaf00; }
+  .btn-primary:focus, .btn-primary.focus {
+    box-shadow: 0 0 0 2px rgba(255, 199, 45, 0.5); }
+  .btn-primary.disabled, .btn-primary:disabled {
+    background-color: #004c00;
+    border-color: #FFC72D; }
+  .btn-primary:active, .btn-primary.active,
+  .show > .btn-primary.dropdown-toggle {
+    color: white;
+    background-color: #001900;
+    background-image: none;
+    border-color: #efaf00; }
+
+.btn-primary:hover {
+  color: #004c00;
+  background-color: #FFC72D;
+  border-color: #004c00; }
+  .btn-primary:hover:hover {
+    color: #004c00;
+    background-color: #f9b700;
+    border-color: #000f00; }
+  .btn-primary:hover:focus, .btn-primary:hover.focus {
+    box-shadow: 0 0 0 2px rgba(0, 76, 0, 0.5); }
+  .btn-primary:hover.disabled, .btn-primary:hover:disabled {
+    background-color: #FFC72D;
+    border-color: #004c00; }
+  .btn-primary:hover:active, .btn-primary:hover.active,
+  .show > .btn-primary:hover.dropdown-toggle {
+    color: #004c00;
+    background-color: #f9b700;
+    background-image: none;
+    border-color: #000f00; }
+
+.Events .detail {
+  font-size: 18px;
+  text-decoration: underline; }
+
+.Events .EventList {
+  padding-left: 0px;
+  list-style: none; }
+  .Events .EventList .EventItem {
+    border: #004c00 2px solid;
+    border-radius: 5px;
+    margin: 15px 0px; }
+    .Events .EventList .EventItem .card-block {
+      padding: 0.50rem; }
+    .Events .EventList .EventItem .card-header {
+      font-size: 18px;
+      font-weight: bold;
+      color: #004c00;
+      background-color: #FFC72D;
+      text-shadow: -.5px 0 white, 0 .5px white, .5px 0 white, 0 -.5px white;
+      border-bottom: #004c00 2px solid; }
+    .Events .EventList .EventItem .EventDate {
+      border: #004c00 solid 5px;
+      padding: 10px 10px;
+      color: black;
+      background: #FFC72D; }
+      .Events .EventList .EventItem .EventDate .EventDay {
+        padding: 10px 10px;
+        font-size: 30px; }
+      .Events .EventList .EventItem .EventDate .EventMonth {
+        font-size: 16px; }
+    .Events .EventList .EventItem .EventDetails {
+      padding: 10px 10px;
+      color: #004c00;
+      border: #004c00 solid 5px;
+      background-color: white; }

@@ -1,0 +1,12 @@
+@import 'src/_styles/variables.scss';
+
+//
+// TopBanner
+//
+
+.TopBanner {
+    min-height: 25px;
+    background: $warrior-gold;
+    border-top: $warrior-green 5px solid;
+    border-bottom: $warrior-green 5px solid;
+}

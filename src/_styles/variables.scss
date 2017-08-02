@@ -1,0 +1,41 @@
+@import 'bootstrap/scss/_variables.scss';
+@import 'bootstrap/scss/_mixins.scss';
+
+//Color Scheme
+$warrior-green: #004c00;
+$warrior-gold: #FFC72D;
+
+
+//Header Colors
+$header-item-color: #3f3f3f;
+$dark-grey: #3f3f3f;
+
+$mobile-breakpoint: 992px;
+
+.btn-primary { 
+   @include button-variant(white, $warrior-green, white);
+}
+.btn.btn-primary:hover {
+    color: $warrior-gold;
+    background-color: $warrior-green;
+    border-color: white;
+//    @include button-variant($warrior-gold, $warrior-green, $warrior-green);
+}
+
+.btn-secondary { 
+    @include button-variant($warrior-green, white, $warrior-green);
+}
+
+.btn.btn-secondary:hover {
+    color: white;
+    background-color: $warrior-green;
+//    @include button-variant($warrior-gold, $warrior-green, $warrior-green);
+}
+
+// .btn-danger {
+//   @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
+// }
+
+// .btn-warning {
+//   @include button-variant($btn-warning-color, $btn-warning-bg, $btn-warning-border);
+// }

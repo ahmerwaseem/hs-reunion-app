@@ -1,14 +1,21 @@
 //@import
-
+@import 'src/_styles/variables.scss';
 //
 // Footer
 //
 
 .Footer {
-    min-height: 10%;
-    background: black;
-    color: #3f3f3f;
     .Footer-Content{
-        padding: 15px 35px;
+        min-height: 70px;
+        background-color: $warrior-gold;
+        color: $warrior-green;
+        padding-top: 25px;
+        border-top: $warrior-green 5px solid;
+        border-bottom: $warrior-green 5px solid;
+    }
+
+    g .social-svg-icon{
+        fill: white; 
+
     }
 }
