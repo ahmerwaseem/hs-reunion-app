@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import chiefLogo from '../../chieflogo.png';
 import brand from '../../BrandImage.png';
 import  SocialIcons  from 'react-social-icons';
+import ModalWindow from '../ModalWindow/ModalWindow'
 const propTypes = {
 
 };
@@ -22,6 +23,9 @@ const defaultProps = {
 class Header  extends Component{
   constructor(props) {
     super(props);
+    this.state = {
+      showModal: false,
+    }
 
   }
   render(){
@@ -34,7 +38,7 @@ class Header  extends Component{
       <div className="Header">
           <nav className="navbar navbar-toggleable-md sticky-top navbar-light">
             <a className="navbar-brand" href="#">
-              <img src={brand} width="475px" height="200px" className="d-inline-block align-top text" alt=""/>
+              <img src={brand} width="650px" height="325px" className="d-inline-block align-top text img-fluid" alt=""/>
             </a>
             <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
@@ -46,6 +50,9 @@ class Header  extends Component{
                 </li>
                 <li className="Header-Item nav-item" >
                   <Link to='/events'>Events</Link>
+                </li>
+                <li className="Header-Item nav-item" >
+                  <Link to='/classmates'>Classmates</Link>
                 </li>
                 <li className="Header-Item nav-item" >
                   <Link to='/contact'>Contact</Link>
@@ -69,7 +76,7 @@ class Header  extends Component{
                         <li className="Header-Item nav-item" >
                           <span>Hi, {this.props.user.userInfo.userFirstName} </span>
                         </li>
-                        <li className="Header-Item nav-item" onClick={ () => { this.props.signOut()}}>
+                        <li className="Header-Item nav-item" onClick={ () => { this.props.signOut(); this.setState({ showModal: true})}}>
                           <span>Sign Out</span>
                         </li>
                       </ul>
@@ -77,7 +84,14 @@ class Header  extends Component{
                   }
                 })()}
               </ul>
-
+            <ModalWindow 
+            animation= {true}
+            showModal= {this.state.showModal} 
+            title = "Thanks for stopping by!"
+            content = "You have been logged out."
+            cancel = "Close"
+            onCancel = {(e)=>{this.setState({showModal:false})}}
+            />
             </div>
               
               {/* <form className="form-inline my-2 my-lg-0">

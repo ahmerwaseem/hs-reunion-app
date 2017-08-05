@@ -18,7 +18,10 @@ class Events  extends Component{
     this.cancelClick = this.cancelClick.bind(this);
     this.state = {
       buyTicketsModal : false,
-      cancelModal : false
+      cancelModal : false,
+      confirmBuyModal : false,
+      confirmCancelModal : false,
+      selected: 1
     }
 
     this.eventID = "";
@@ -85,7 +88,7 @@ class Events  extends Component{
   render(){
     return(
       <div className="Events">
-        <h5>Events</h5>
+        <h5>Upcoming Events</h5>
         <ul className="EventList">
           {(()=>{
             console.log(this.props.events, "props.events")
@@ -111,20 +114,20 @@ class Events  extends Component{
                 let isGoing = false;
 
                 return( 
-                  <li className="EventItem " key={id}>
+                  <li className="EventItem" key={id}>
                     <div className="card">
                       <p className="card-header">{name}</p>
                       <div className="card-block">
                         <p className="card-title">{description}</p>
                       </div>
                       <div className="card-block">
-                        <p className="card-title"><span className="detail">Where:</span>{" "+address+" "}{city+" "}{state+", "}{zipcode}</p>
+                        <p className="card-title"><span className="detail">Where:</span>{" " +location+", "+address+" "}{city+" "}{state+", "}{zipcode}</p>
                       </div>
                       <div className="card-block">
                         <p className="card-title"><span className="detail">When: </span>{" "+weekday+", "}{month+" "} {day+", "} {year} {" at "+time} </p>
                       </div>
                       <div className="card-block">
-                        <p className="card-title"><span className="detail">Ticket Cost: </span> { (cost!="FREE") ? "$"+cost : cost } (Limit one per person) </p>
+                        <p className="card-title"><span className="detail">Cost per ticket: </span> { (cost!="FREE") ? "$"+cost : cost } </p>
                       </div>
                         {(()=>{
                         let whosGoing = [];
@@ -135,9 +138,15 @@ class Events  extends Component{
                           })
 
                           return (
-                            <div>
-                                  {whosGoing.map((item=> {return ( <div >{`${item.firstname} ${item.lastname}`}</div>)}))}
-                            </div>
+                            <div className="dropdown">
+                              <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Attendees
+                              </button>
+                              <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                {(whosGoing.length == 0) ? (<a className="dropdown-item" >None</a>): 
+                                whosGoing.map((item=> {return ( <a className="dropdown-item" >{`${item.firstname} ${item.lastname}`}</a>)}))}
+                              </div>
+                            </div>                          
                           )
                         }
                       })()}
@@ -149,7 +158,7 @@ class Events  extends Component{
                               isGoing = true;
                             });
                         } 
-                        const submitText = ((isGoing) ? "RSVP'D" : "BUY TICKET & RSVP")
+                        const submitText = ((isGoing) ? "TICKETS BOUGHT & CONFIRMED" : "BUY TICKETS")
                         return (
                           <button disabled={isGoing} className="btn btn-primary"
                             onClick={()=>this.buyClick(id,cost)}
@@ -165,7 +174,7 @@ class Events  extends Component{
                                 className="btn btn-secondary "
                                 onClick={()=>this.cancelClick(id)}
                               > 
-                              CANCEL RESERVATION 
+                              CANCEL TICKETS 
                               </button>
 
                           )
@@ -181,7 +190,7 @@ class Events  extends Component{
                         else{
                           return(
                             <div className="alert alert-warning" role="alert">
-                              Don't miss out, buy your ticket today! 
+                              Don't miss out, buy your tickets today! 
                             </div>
                           )
                         }
@@ -202,55 +211,85 @@ class Events  extends Component{
             animation= {true}
             showModal= {this.state.buyModal} 
             title = {this.cost != "FREE" ? 
-            "Buy Ticket": "RSVP"
+            "Buy Tickets": "Rerserve your tickets"
             }
             content = {this.cost != "FREE" ? 
-            "Enter Credit Card number and click Buy Now to purchase ticket" : "Click RSVP to confirm your ticket."
+            "Enter Credit Card number and click Buy Now to purchase tickets." : "Click RSVP to confirm your ticket."
             }
             submit = {this.cost != "FREE" ? 
             "Buy Now" : "RSVP"
             }
             cancel = "Cancel"
-            onCancel = {(e)=>{this.setState({buyModal:false})}}
+            onCancel = {(e)=>{this.setState({buyModal:false,selected:1})}}
             onSubmit = {(e)=>{
-                this.setState({
-                  buyModal:false,
-                  confirmBuyModal: true
-                })
                 this.props.rsvpEvent(this.props.user.userInfo.userId,this.eventID);
                 this.props.whosGoing();
+                this.setState({
+                  buyModal:false,
+                  confirmBuyModal: true,
+                  selected: 1,
+                })
               }
             }
           >
-            {this.cost != "FREE" ? 
-            <div>
-              <div><label>Credit Card Number:</label></div>
-              <div><input type="text" required/></div>
-            </div> : ""
-            }
+            
+            {(()=>{
 
-            <div>
-              <div>{`Total: ${this.cost}`} </div>
-            </div>
+            if(this.cost != "FREE"){
+            return ( 
+              <div>
+                <div>
+                  <label>
+                    Credit Card Number:
+                  </label>
+                </div>
+                <div>
+                  <input type="text" required/>
+                </div>
+              </div> 
+            )
+            }})()}
+                <div>Tickets:
+                  <select id="tickets" onChange={(e)=>{this.setState({selected: e.target.value})}}>
+                    <option value={1} defaultValue>1</option>
+                    <option value={2}>2</option>
+                    <option value={3}>3</option>
+                    <option value={4}>4</option>
+                    <option value={5}>5</option>
+                  </select>
+                </div>
+
+                        
+            {(()=>{
+
+            if(this.cost != "FREE"){
+            return ( 
+              <div>{`Total: $${this.cost * this.state.selected}.00`} </div>
+            )
+            }})()}
+
+                
+                
+
 
           </ModalWindow>
 
            <ModalWindow 
             animation= {true}
             showModal= {this.state.cancelModal} 
-            title = "Cancel Reservation"
-            content = {(this.cost != "FREE") ?  "Click 'Get Refund' to complete your refund and cancel your reservation." : 
-                    "Click Cancel to cancel your reservation"}
+            title = "Ticket Cancellation"
+            content = {(this.cost != "FREE") ?  "Click 'Get Refund' to complete your refund and cancel your tickets." : 
+                    "Click 'Cancel' to cancel your tickets."}
             submit = {(this.cost == "FREE") ? "Cancel" : "Get Refund"}
             cancel = "Exit"
             onCancel = {(e)=>{this.setState({cancelModal:false})}}
             onSubmit = {(e)=>{
+                this.props.cancelRsvp(this.props.user.userInfo.userId,this.eventID);
+                this.props.whosGoing();
                 this.setState({
                   cancelModal:false,
                   confirmCancelModal: true
                 })
-                this.props.cancelRsvp(this.props.user.userInfo.userId,this.eventID);
-                this.props.whosGoing();
               }
             }
           />
@@ -258,8 +297,8 @@ class Events  extends Component{
           <ModalWindow 
             animation= {true}
             showModal= {this.state.confirmBuyModal} 
-            title = "Ticket confirmed"
-            content = "Your ticket has been confirmed. We look forward to seeing you."
+            title = "Tickets confirmed"
+            content = "Your tickets have been confirmed. We look forward to seeing you."
             cancel = "Close"
             onCancel = {(e)=>{this.setState({confirmBuyModal:false})}}
           />
@@ -267,8 +306,8 @@ class Events  extends Component{
            <ModalWindow 
             animation= {true}
             showModal= {this.state.confirmCancelModal} 
-            title = "Cancelled"
-            content = {`Your reservation has been cancelled${(this.cost != "FREE") ? " and refunded" : ""} .`}
+            title = "Tickets Cancelled"
+            content = {`Your tickets have been cancelled${(this.cost != "FREE") ? " and refunded" : ""}.`}
             cancel = "Close"
             onCancel = {(e)=>{this.setState({confirmCancelModal:false})}}
             />

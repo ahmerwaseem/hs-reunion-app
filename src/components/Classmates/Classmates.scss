@@ -1,0 +1,15 @@
+
+@import 'src/_styles/variables.scss';
+
+//
+// Classmates
+//
+
+.Classmates {
+    .item{
+        padding-bottom: 15px;
+    }
+    .name{
+        color: $warrior-green;
+    }
+}

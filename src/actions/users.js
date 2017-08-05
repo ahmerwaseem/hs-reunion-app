@@ -9,6 +9,7 @@ export const SIGN_OUT = "SIGN_OUT";
 export const REGISTER_USER = "REGISTER_USER";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 export const WHO_IS_GOING = "WHO_IS_GOING";
+export const GET_ALL_USERS = "GET_ALL_USERS";
 
 export const userSignIn = ( email, password ) => {
     return function(dispatch){
@@ -63,6 +64,28 @@ export const whosGoing = (  ) => {
             console.log(err, 'whosgoing error');
         })
 
+    }
+}
+
+export const getAllUsers = ( ) => {
+        return function(dispatch){
+
+        axios.get('/user/all')
+        .then ((res )=> {
+            dispatch(allUsers(res));
+            console.log(res, 'whosgoing success');
+        })
+        .catch (( err ) => {
+            console.log(err, 'whosgoing error');
+        })
+
+    }
+}
+
+export const allUsers = ( data ) => {
+    return {
+        type: GET_ALL_USERS,
+        payload: data
     }
 }
 

@@ -1,5 +1,6 @@
 
 import axios from 'axios';
+import { whosGoing } from './users';
 export const UPDATE_RESERVATIONS = 'UPDATE_RESERVATIONS';
 
 
@@ -21,6 +22,7 @@ export const rsvpEvent = (userID, eventID) => {
       })
       .then(res => {   
               dispatch(updateReservations(res));
+              dispatch(whosGoing());
       })
   }
 }
@@ -34,6 +36,7 @@ export const cancelRsvp = (userID, eventID) => {
       })
       .then(res => {   
               dispatch(updateReservations(res));
+              dispatch(whosGoing());
       })
   }
 }

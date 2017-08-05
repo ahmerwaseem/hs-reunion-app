@@ -4,7 +4,8 @@ import
     SIGN_IN_SUCCESS,
     SIGN_OUT,
     CLEAR_ERRORS,
-  WHO_IS_GOING } 
+    WHO_IS_GOING,
+    GET_ALL_USERS } 
 from '../actions/users'
 
 import { getCookie } from '../utils/cookies';
@@ -51,6 +52,11 @@ export default function ( state = initialState , action ) {
     case WHO_IS_GOING:{
       return Object.assign({}, state, {
         whosGoing: action.payload.data
+      });
+    }
+    case GET_ALL_USERS:{
+      return Object.assign({}, state, {
+        classmates: action.payload.data
       });
     }
 

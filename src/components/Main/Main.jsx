@@ -5,6 +5,7 @@ import Contact from '../Contact/Contact';
 import LoginPage from '../../containers/LoginPage/LoginPage';
 import Register from '../../containers/Register/Register';
 import Events from '../../containers/Events/Events';
+import Classmates from '../Classmates/Classmates';
 import Footer from '../Footer/Footer';
 import PropTypes from 'prop-types';
 import './Main.css';
@@ -31,6 +32,7 @@ class Main  extends Component{
           <Route path="/login"    component={LoginPage}/>
           <Route path="/events"   component={Events}/>
           <Route path="/register" component={Register}/>
+          <Route path="/classmates" component={Classmates}/>
         </Switch>
       </div>
     )

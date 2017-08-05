@@ -1,47 +1,52 @@
-.btn {
-  padding: 10px 10px;
-  font-size: 16px;
-  border-radius: 5px;
-  min-width: 35px;
-  line-height: 1.5rem;
-  font-weight: bold; }
-
 .btn-primary {
   color: white;
   background-color: #004c00;
-  border-color: #FFC72D; }
+  border-color: white; }
   .btn-primary:hover {
     color: white;
     background-color: #001900;
-    border-color: #efaf00; }
+    border-color: #e0e0e0; }
   .btn-primary:focus, .btn-primary.focus {
-    box-shadow: 0 0 0 2px rgba(255, 199, 45, 0.5); }
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5); }
   .btn-primary.disabled, .btn-primary:disabled {
     background-color: #004c00;
-    border-color: #FFC72D; }
+    border-color: white; }
   .btn-primary:active, .btn-primary.active,
   .show > .btn-primary.dropdown-toggle {
     color: white;
     background-color: #001900;
     background-image: none;
-    border-color: #efaf00; }
+    border-color: #e0e0e0; }
 
-.btn-primary:hover {
+.btn.btn-primary:hover {
+  color: #FFC72D;
+  background-color: #004c00;
+  border-color: white; }
+
+.btn-secondary {
   color: #004c00;
-  background-color: #FFC72D;
+  background-color: white;
   border-color: #004c00; }
-  .btn-primary:hover:hover {
+  .btn-secondary:hover {
     color: #004c00;
-    background-color: #f9b700;
+    background-color: #e6e6e6;
     border-color: #000f00; }
-  .btn-primary:hover:focus, .btn-primary:hover.focus {
+  .btn-secondary:focus, .btn-secondary.focus {
     box-shadow: 0 0 0 2px rgba(0, 76, 0, 0.5); }
-  .btn-primary:hover.disabled, .btn-primary:hover:disabled {
-    background-color: #FFC72D;
+  .btn-secondary.disabled, .btn-secondary:disabled {
+    background-color: white;
     border-color: #004c00; }
-  .btn-primary:hover:active, .btn-primary:hover.active,
-  .show > .btn-primary:hover.dropdown-toggle {
+  .btn-secondary:active, .btn-secondary.active,
+  .show > .btn-secondary.dropdown-toggle {
     color: #004c00;
-    background-color: #f9b700;
+    background-color: #e6e6e6;
     background-image: none;
     border-color: #000f00; }
+
+.btn.btn-secondary:hover {
+  color: white;
+  background-color: #004c00; }
+
+.App {
+  padding: 0px !important;
+  margin: 0px; }
