@@ -19,7 +19,7 @@ const initialState = {
 }
 
 if (cookie){
-  console.log("cookie call")
+//  console.log("cookie call")
   initialState.userInfo = JSON.parse(cookie);
   initialState.signedIn = true;
 }

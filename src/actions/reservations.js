@@ -14,7 +14,6 @@ export const getReservations = () => {
 }
 
 export const rsvpEvent = (userID, eventID) => {
-    console.log(userID, eventID);
   return function (dispatch){
       axios.post('/reservations/rsvp', { 
         userid: userID, 
@@ -28,7 +27,7 @@ export const rsvpEvent = (userID, eventID) => {
 }
 
 export const cancelRsvp = (userID, eventID) => {
-    console.log(userID, eventID);
+
   return function (dispatch){
       axios.post('/reservations/cancel', { 
         userid: userID, 

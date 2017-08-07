@@ -46,26 +46,26 @@ class Header  extends Component{
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="Header-Nav navbar-nav">
                 <li className="Header-Item nav-item" >
-                  <Link to='/'>Home</Link>
+                  <Link to='/'>HOME</Link>
                 </li>
                 <li className="Header-Item nav-item" >
-                  <Link to='/events'>Events</Link>
+                  <Link to='/events'>EVENTS</Link>
                 </li>
                 <li className="Header-Item nav-item" >
-                  <Link to='/classmates'>Classmates</Link>
+                  <Link to='/classmates'>CLASSMATES</Link>
                 </li>
                 <li className="Header-Item nav-item" >
-                  <Link to='/contact'>Contact</Link>
+                  <Link to='/contact'>CONTACT</Link>
                 </li>
                 {(() =>{
                   if (!this.props.user.signedIn){
                     return (
                       <ul className="Header-Nav navbar-nav">
                         <li className="Header-Item nav-item" >
-                          <Link to='/login'>Login</Link>
+                          <Link to='/login'>LOGIN</Link>
                         </li>
                         <li className="Header-Item nav-item" >
-                          <Link to='/register'>Register</Link>
+                          <Link to='/register'>REGISTER</Link>
                         </li>
                       </ul>
                     )
@@ -74,10 +74,10 @@ class Header  extends Component{
                     return (
                       <ul className="Header-Nav navbar-nav">
                         <li className="Header-Item nav-item" >
-                          <span>Hi, {this.props.user.userInfo.userFirstName} </span>
+                          <span className="name">HI, {this.props.user.userInfo.userFirstName.toUpperCase()} </span>
                         </li>
                         <li className="Header-Item nav-item" onClick={ () => { this.props.signOut(); this.setState({ showModal: true})}}>
-                          <span>Sign Out</span>
+                          <span>SIGN OUT</span>
                         </li>
                       </ul>
                     )

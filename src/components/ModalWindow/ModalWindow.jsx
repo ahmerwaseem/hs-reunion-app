@@ -40,15 +40,15 @@ class ModalWindow  extends Component{
               <Modal.Header>
                 <Modal.Title>{title}</Modal.Title>
               </Modal.Header>
-              
+              <form>
               <Modal.Body>
                 {this.props.children}
                 {content}
               </Modal.Body>
-
+              
               <Modal.Footer>
                 { (submit != undefined) ?
-                <button 
+                <button type="submit"
                   className="btn btn-primary"
                   onClick={(e)=>{
                     e.preventDefault() ; 
@@ -66,7 +66,9 @@ class ModalWindow  extends Component{
                   }>
                   {cancel}
                 </button>
+                
               </Modal.Footer>
+              </form>
 
             </Modal.Dialog>
           )

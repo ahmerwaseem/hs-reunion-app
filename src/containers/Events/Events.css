@@ -48,8 +48,8 @@
   background-color: #004c00; }
 
 .Events {
-  margin-left: 20%;
-  margin-right: 20%; }
+  margin-left: 10%;
+  margin-right: 10%; }
   .Events .detail {
     font-size: 18px;
     text-decoration: underline; }
@@ -84,3 +84,5 @@
         color: #004c00;
         border: #004c00 solid 5px;
         background-color: white; }
+  .Events .qty {
+    padding-top: 5px; }

@@ -13,7 +13,7 @@ import ModalWindow from '../../components/ModalWindow/ModalWindow';
 class Events  extends Component{
   constructor(props) {
     super(props);
-    console.log(this.props.events, "props", this.props.eventList);
+   // console.log(this.props.events, "props", this.props.eventList);
     this.buyClick = this.buyClick.bind(this);
     this.cancelClick = this.cancelClick.bind(this);
     this.state = {
@@ -43,7 +43,8 @@ class Events  extends Component{
   }
   
 
-  cancelClick = (eventID) => {
+  cancelClick = (eventID,cost) => {
+    this.cost = cost;
     this.eventID = eventID;
       this.setState({
         cancelModal: true
@@ -53,29 +54,7 @@ class Events  extends Component{
   buyClick = (eventID, cost) => {
     this.eventID = eventID;
     this.cost = cost;
-    console.log('clicked')
     if (this.props.user.signedIn != undefined && this.props.user.signedIn){
-      // const { reservationList } = this.props.reservations;
-      // let isGoing = false;
-      // console.log("==",this.props.reservations, this.props.reservations.reservationList);
-      // for ( let i in reservationList){
-      //    console.log("==",reservationList[i].userid,this.props.user.userInfo.userId ,reservationList[i].eventid,eventID);
-      //     if(reservationList[i].userid == this.props.user.userInfo.userId 
-      //       &&  reservationList[i].eventid == eventID){
-      //       isGoing = true;
-      //     }
-
-      // }
-      // if (!isGoing){
-      //   //rsvp
-      //   console.log("rsvp")
-      //   this.props.rsvpEvent(this.props.user.userInfo.userId,eventID);
-      // }
-      // else{
-      //   //cancel
-      //   console.log("cancel")
-      //   this.props.cancelRsvp(this.props.user.userInfo.userId,eventID);
-
         this.setState({
           buyModal: true
         })
@@ -91,7 +70,7 @@ class Events  extends Component{
         <h5>Upcoming Events</h5>
         <ul className="EventList">
           {(()=>{
-            console.log(this.props.events, "props.events")
+          //  console.log(this.props.events, "props.events")
             if(this.props.events != null ){
               return this.props.events.eventList.map((item)=> {
                 const {
@@ -158,7 +137,7 @@ class Events  extends Component{
                               isGoing = true;
                             });
                         } 
-                        const submitText = ((isGoing) ? "TICKETS BOUGHT & CONFIRMED" : "BUY TICKETS")
+                        const submitText = ((isGoing) ? "TICKETS CONFIRMED" : "GET TICKETS")
                         return (
                           <button disabled={isGoing} className="btn btn-primary"
                             onClick={()=>this.buyClick(id,cost)}
@@ -172,7 +151,7 @@ class Events  extends Component{
                           return(
                               <button 
                                 className="btn btn-secondary "
-                                onClick={()=>this.cancelClick(id)}
+                                onClick={()=>this.cancelClick(id,cost)}
                               > 
                               CANCEL TICKETS 
                               </button>
@@ -190,7 +169,7 @@ class Events  extends Component{
                         else{
                           return(
                             <div className="alert alert-warning" role="alert">
-                              Don't miss out, buy your tickets today! 
+                              Don't miss out, get your tickets today! 
                             </div>
                           )
                         }
@@ -214,7 +193,7 @@ class Events  extends Component{
             "Buy Tickets": "Rerserve your tickets"
             }
             content = {this.cost != "FREE" ? 
-            "Enter Credit Card number and click Buy Now to purchase tickets." : "Click RSVP to confirm your ticket."
+            "Enter Credit Card number and click Buy Now to purchase tickets." : "Click RSVP to confirm your tickets."
             }
             submit = {this.cost != "FREE" ? 
             "Buy Now" : "RSVP"
@@ -222,7 +201,7 @@ class Events  extends Component{
             cancel = "Cancel"
             onCancel = {(e)=>{this.setState({buyModal:false,selected:1})}}
             onSubmit = {(e)=>{
-                this.props.rsvpEvent(this.props.user.userInfo.userId,this.eventID);
+                this.props.rsvpEvent(this.props.user.userInfo.userId,this.eventID, this.state.selected);
                 this.props.whosGoing();
                 this.setState({
                   buyModal:false,
@@ -232,24 +211,22 @@ class Events  extends Component{
               }
             }
           >
-            
+          <div className="form-group">  
             {(()=>{
-
+              
             if(this.cost != "FREE"){
             return ( 
-              <div>
+          
                 <div>
                   <label>
                     Credit Card Number:
                   </label>
-                </div>
-                <div>
                   <input type="text" required/>
                 </div>
-              </div> 
+              
             )
             }})()}
-                <div>Tickets:
+                <div className="qty">Qty:
                   <select id="tickets" onChange={(e)=>{this.setState({selected: e.target.value})}}>
                     <option value={1} defaultValue>1</option>
                     <option value={2}>2</option>
@@ -258,17 +235,18 @@ class Events  extends Component{
                     <option value={5}>5</option>
                   </select>
                 </div>
-
+            
                         
             {(()=>{
 
             if(this.cost != "FREE"){
             return ( 
-              <div>{`Total: $${this.cost * this.state.selected}.00`} </div>
+              <div className="qty">{`Total: $${this.cost * this.state.selected}.00`} </div>
             )
             }})()}
 
-                
+            
+          </div>  
                 
 
 
@@ -283,7 +261,8 @@ class Events  extends Component{
             submit = {(this.cost == "FREE") ? "Cancel" : "Get Refund"}
             cancel = "Exit"
             onCancel = {(e)=>{this.setState({cancelModal:false})}}
-            onSubmit = {(e)=>{
+            onSubmit = {(e, numTickets)=>{
+             //  console.log(e,"yoyo");
                 this.props.cancelRsvp(this.props.user.userInfo.userId,this.eventID);
                 this.props.whosGoing();
                 this.setState({
@@ -328,7 +307,7 @@ class Events  extends Component{
 }
 
 const mapStateToProps = (state) => {
-  console.log(state,"state");
+ // console.log(state,"state");
   return {
     ...state
   }

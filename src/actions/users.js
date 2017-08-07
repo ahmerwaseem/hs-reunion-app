@@ -43,10 +43,10 @@ export const register = ( formValues ) => {
             formValues: formValues
         })
         .then ((res )=> {
-            console.log(res, ' registration success');
+           // console.log(res, ' Registration success');
         })
         .catch (( err ) => {
-            console.log(err, 'registration error');
+           // console.log(err, 'registration error');
         })
 
     }
@@ -58,10 +58,10 @@ export const whosGoing = (  ) => {
         axios.post('/user/whosgoing')
         .then ((res )=> {
             dispatch(whosAttending(res));
-            console.log(res, 'whosgoing success');
+           // console.log(res, 'whosgoing success');
         })
         .catch (( err ) => {
-            console.log(err, 'whosgoing error');
+           // console.log(err, 'whosgoing error');
         })
 
     }
@@ -73,10 +73,10 @@ export const getAllUsers = ( ) => {
         axios.get('/user/all')
         .then ((res )=> {
             dispatch(allUsers(res));
-            console.log(res, 'whosgoing success');
+          //  console.log(res, 'whosgoing success');
         })
         .catch (( err ) => {
-            console.log(err, 'whosgoing error');
+          //  console.log(err, 'whosgoing error');
         })
 
     }

@@ -28,7 +28,7 @@ class Classmates  extends Component{
                   classmates
                 }
                 = this.props.user;;
-                console.log(classmates, "classmates");
+                //console.log(classmates, "classmates");
                 return (
 
                   <div>
@@ -38,7 +38,7 @@ class Classmates  extends Component{
                           <div className="row item">
                           <div  className="list-group-item list-group-item-action flex-column align-items-start col-md-7 offset-md-2 col-xs-12">
                             <div className="d-flex w-300 justify-content-between">
-                              <div className="mb-1 name"><strong>{`${item.firstname} ${item.lastname}`}</strong></div>
+                              <div className="mb-1 name"><strong>{`${item.lastname}, ${item.firstname}`}</strong></div>
                             </div>
                             <small className="text-muted">{`Occupation: ${item.occupation}`}</small>
                             <p className="mb-1">{`${item.firstname}: ${item.bio}`}</p>
@@ -57,13 +57,14 @@ class Classmates  extends Component{
               }
               else{
                 return(
-                  <span>Apparently no one has signed up.</span>
+                  <div className="row">
+                    <span className="col-md-7 offset-md-2 col-xs-12">
+                      Apparently no one has signed up.
+                    </span>
+                  </div>
 
                 )
               }
-
-
-
 
             })()}
       </div>

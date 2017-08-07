@@ -14,7 +14,7 @@ import { required, email, asyncValidate, passwordLength, passwordSpaces } from '
 
 const validate = (values) =>{
   const errors = {};
-  console.log(values);
+ // console.log(values);
   if (values.password != null && values.confirmPassword != null){
     if (values.password !== values.confirmPassword){
       errors.confirmPassword = "Passwords do not match";
@@ -119,7 +119,7 @@ class Register  extends Component{
     this.state = {
       showModal : false
     }
-    console.log(this.props.history,this.props.history.length)
+  //  console.log(this.props.history,this.props.history.length)
 
 
   }

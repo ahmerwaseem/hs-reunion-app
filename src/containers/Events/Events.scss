@@ -6,8 +6,8 @@
 @import 'src/_styles/variables.scss';
 
 .Events {
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-left: 10%;
+    margin-right: 10%;
     .detail{
         font-size: 18px;
         text-decoration: underline
@@ -68,5 +68,7 @@
         }
 
     }
-
+    .qty{
+        padding-top: 5px;
+    }
 }
